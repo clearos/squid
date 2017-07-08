@@ -100,6 +100,8 @@ BuildRequires: db4-devel
 BuildRequires: expat-devel libxml2-devel
 # TPROXY requires libcap, and also increases security somewhat
 BuildRequires: libcap-devel
+# eCAP
+BuildRequires: libecap-devel = 0.0.3
 # eCAP and some other need libltdl
 BuildRequires: libtool libtool-ltdl-devel
 # g++ required
@@ -190,6 +192,7 @@ export LDFLAGS="-pie"
    --enable-cache-digests \
    --enable-cachemgr-hostname=localhost \
    --enable-delay-pools \
+   --enable-ecap \
    --enable-epoll \
    --enable-icap-client \
    --enable-ident-lookups \
@@ -372,6 +375,9 @@ if [ "$1" -ge "1" ] ; then
 fi
 
 %changelog
+* Mon Apr 04 2017 ClearFoundation <developer@clearfoundation.com> - 7:3.1.23-24.clear
+- Added eCAP
+
 * Mon Oct 17 2016 Luboš Uhliarik <luhliari@redhat.com> - 7:3.1.23-24
 - Resolves: #1235114 - Squid crashes with 'assertion failed: disk.cc:377:
   "fd >= 0"' after reloading the configuration.
